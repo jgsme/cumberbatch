@@ -35,6 +35,10 @@ What's Your Benedict Cumberbatch Name? Online
 
 * jigsaw (http://jgs.me, [@e-jigsaw](http://github.com/e-jigsaw))
 
+# Thanks
+
+* Inspired by https://github.com/Trott/cumberbatch-name
+
 # License
 
 MIT
