@@ -8,6 +8,9 @@
     "deploy": "./node_modules/.bin/gulp deploy"
   },
   "author": "jigsaw (http://jgs.me)",
+  "repository": {
+    "url": "https://github.com/jgsme/cumberbatch.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "browserify": "^8.1.1",
