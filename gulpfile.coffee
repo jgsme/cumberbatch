@@ -30,6 +30,10 @@ gulp.task 'compact', ->
     .pipe uglify()
     .pipe gulp.dest(paths.dest)
 
+gulp.task 'CNAME', ->
+  gulp.src 'src/CNAME'
+    .pipe gulp.dest(paths.dest)
+
 gulp.task 'default', ['jade', 'browserify']
 gulp.task 'watch', ['default'], ->
   gulp.watch paths.jade, ['jade']
@@ -37,7 +41,7 @@ gulp.task 'watch', ['default'], ->
   conn.server
     root: 'build'
 
-gulp.task 'deploy', (callback)-> run 'default', 'compact', 'deploy-main', callback
+gulp.task 'deploy', (callback)-> run ['default', 'CNAME'], 'compact', 'deploy-main', callback
 gulp.task 'deploy-main', ->
   gulp.src './build/*'
     .pipe deploy
