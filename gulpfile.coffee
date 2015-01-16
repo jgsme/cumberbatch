@@ -1,9 +1,11 @@
-gulp = require 'gulp'
-jade = require 'gulp-jade'
-conn = require 'gulp-connect'
-deploy = require 'gulp-gh-pages'
+gulp       = require 'gulp'
+jade       = require 'gulp-jade'
+conn       = require 'gulp-connect'
+deploy     = require 'gulp-gh-pages'
 browserify = require 'browserify'
-source = require 'vinyl-source-stream'
+source     = require 'vinyl-source-stream'
+uglify     = require 'gulp-uglify'
+run        = require 'run-sequence'
 
 paths =
   jade: 'src/*.jade'
@@ -23,6 +25,11 @@ gulp.task 'browserify', ->
   .pipe source('index.js')
   .pipe gulp.dest(paths.dest)
 
+gulp.task 'compact', ->
+  gulp.src 'build/index.js'
+    .pipe uglify()
+    .pipe gulp.dest(paths.dest)
+
 gulp.task 'default', ['jade', 'browserify']
 gulp.task 'watch', ['default'], ->
   gulp.watch paths.jade, ['jade']
@@ -30,7 +37,8 @@ gulp.task 'watch', ['default'], ->
   conn.server
     root: 'build'
 
-gulp.task 'deploy', ['default'], ->
+gulp.task 'deploy', (callback)-> run 'default', 'compact', 'deploy-main', callback
+gulp.task 'deploy-main', ->
   gulp.src './build/*'
     .pipe deploy
       cacheDir: 'tmp'
