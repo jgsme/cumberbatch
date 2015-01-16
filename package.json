@@ -1,19 +1,27 @@
 {
   "name": "cumberbatch",
   "version": "0.0.0",
-  "description": "What&#x27;s Your Benedict Cumberbatch Name? Online",
+  "description": "What's Your Benedict Cumberbatch Name? Online",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "jigsaw (http://jgs.me)",
   "license": "MIT",
   "devDependencies": {
+    "browserify": "^8.1.1",
     "coffee-script": "^1.8.0",
+    "coffeeify": "^1.0.0",
+    "cumberbatch-name": "^1.0.6",
     "gulp": "^3.8.10",
-    "gulp-coffee": "^2.2.0",
     "gulp-connect": "^2.2.0",
     "gulp-gh-pages": "^0.4.0",
     "gulp-jade": "^0.10.0",
-    "gulp-stylus": "^1.3.4"
+    "react": "^0.12.2",
+    "vinyl-source-stream": "^1.0.0"
+  },
+  "browserify": {
+    "transform": [
+      "coffeeify"
+    ]
   }
 }
