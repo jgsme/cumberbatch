@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "What's Your Benedict Cumberbatch Name? Online",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "./node_modules/.bin/gulp",
+    "watch": "./node_modules/.bin/gulp watch",
+    "deploy": "./node_modules/.bin/gulp deploy"
   },
   "author": "jigsaw (http://jgs.me)",
   "license": "MIT",
